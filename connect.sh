@@ -3,7 +3,6 @@ set -euo pipefail
 
 ### --- CONFIGURE THESE VARIABLES --- 
 SSH_PUB_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOT3yCo3R2OEmry35UGZclbqVpo8OI9FrYpSll+lSB4z severxak@protonmail.com"
-TAILSCALE_AUTH_KEY="tskey-auth-kAXgXRWEys11CNTRL-zza4fwKQdSAdB5cVkgkfSAwHMzFiFDBP"
 TIMEZONE="UTC"
 LOCALE="en_US.UTF-8"
 ### --------------------------------
@@ -75,20 +74,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 # Add current user to docker group
 sudo usermod -aG docker $USER
 
-log "Installing Tailscale"
-# Add key & repo
-curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
-echo "deb [signed-by=/usr/share/keyrings/tailscale-archive-keyring.gpg] https://pkgs.tailscale.com/stable/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/tailscale.list
-
-# Update & install
-sudo apt-get update -y
-sudo apt-get install -y tailscale
-
-# Start Tailscale
-sudo tailscale up --authkey="tskey-auth-kAXgXRWEys11CNTRL-zza4fwKQdSAdB5cVkgkfSAwHMzFiFDBP" --ssh
+log "Installing & Starting Tailscale (one-liner)"
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up --auth-key="tskey-auth-kNKWiBYXou11CNTRL-A8C2YxmusBYZdcxTutTpBYLXDBAvkqVaa" --ssh
 
 echo -e "\n===================================="
 echo -e "     ✅ ARCK SETUP COMPLETE ✅"
 echo -e "   🔄 Reboot recommended now!"
 echo -e "====================================\n"
-
