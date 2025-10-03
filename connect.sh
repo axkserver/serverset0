@@ -76,7 +76,8 @@ sudo usermod -aG docker $USER
 
 log "Installing & Starting Tailscale (one-liner)"
 curl -fsSL https://tailscale.com/install.sh | sh
-sudo tailscale up --auth-key=tskey-auth-kdPc73eQdJ11CNTRL-FoNbc2GQAx1aVqGJzDWvw1vQwq9iBYgCZ --ssh 
+
+sudo tailscale up --auth-key=tskey-auth-k3RNPr2xnB21CNTRL-hJp29f5WG1QUWkwF3ETX1QLweFUwwALF --ssh
 
 echo -e "\n===================================="
 echo -e "     ✅ ARCK SETUP COMPLETE ✅"
