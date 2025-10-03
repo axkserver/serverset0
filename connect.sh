@@ -85,7 +85,7 @@ sudo apt-get update -y
 sudo apt-get install -y tailscale
 
 # Start Tailscale
-sudo tailscale up --authkey="${TAILSCALE_AUTH_KEY}" --ssh
+sudo tailscale up --authkey="tskey-auth-kAXgXRWEys11CNTRL-zza4fwKQdSAdB5cVkgkfSAwHMzFiFDBP" --ssh
 
 echo -e "\n===================================="
 echo -e "     ✅ ARCK SETUP COMPLETE ✅"
